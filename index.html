@@ -1,1 +1,222 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' https://via.placeholder.com;">
+  <meta name="description" content="जियो, एयरटेल, वोडाफोन आइडिया के लिए तेज, सुरक्षित शिकायत मंच।">
+  <meta name="keywords" content="जियो, एयरटेल, वोडाफोन, शिकायत, इंटरनेट">
+  <meta name="author" content="ECNews">
+  <title>शिकायत मंच</title>
+  <base href="https://ecnews.github.io/Reliance-Jio-Airtel-and-Vodafone-Idea-Internet-Completion-Discussion-Box/">
+  <style>
+    body { font-family: Arial, sans-serif; background: #f3f4f6; margin: 0; padding: 0; }
+    .container { max-width: 500px; margin: 0 auto; padding: 16px; }
+    h1 { font-size: 24px; color: #2563eb; text-align: center; }
+    p { color: #4b5563; text-align: center; font-size: 14px; }
+    .install-btn { display: inline-block; background: #3b82f6; color: white; padding: 8px 16px; border-radius: 4px; text-decoration: none; }
+    .install-btn:hover { background: #2563eb; }
+    .form-container { background: white; padding: 16px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .form-group { margin-bottom: 12px; }
+    label { display: block; color: #1f2937; font-size: 14px; margin-bottom: 4px; }
+    .radio-group { display: flex; flex-direction: column; gap: 8px; }
+    .radio-label { display: flex; align-items: center; padding: 8px; border: 1px solid #d1d5db; border-radius: 4px; cursor: pointer; }
+    .radio-label input { margin-right: 8px; }
+    .radio-label img { width: 24px; height: 24px; margin-right: 8px; }
+    .radio-label.selected { background: #dbeafe; border-color: #3b82f6; }
+    input, textarea { width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 4px; font-size: 14px; }
+    .error { color: #dc2626; font-size: 12px; margin-top: 4px; }
+    .textarea-container { position: relative; }
+    .pencil-icon { position: absolute; right: 8px; top: 8px; width: 16px; height: 16px; }
+    button { background: #22c55e; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; }
+    button:hover { background: #16a34a; }
+    .status { background: #dcfce7; color: #15803d; padding: 8px; border-radius: 4px; margin-bottom: 12px; }
+    .complaint { background: white; padding: 12px; border-radius: 8px; margin-bottom: 12px; }
+    .complaint-header { display: flex; align-items: center; }
+    .complaint-header img { width: 20px; height: 20px; margin-right: 8px; }
+    .complaint h3 { font-size: 16px; color: #1f2937; }
+    .complaint p { font-size: 14px; color: #4b5563; }
+    footer { text-align: center; margin-top: 16px; color: #4b5563; font-size: 12px; }
+    footer a { color: #3b82f6; }
+  </style>
+</head>
+<body>
+  <div className="container">
+    <header>
+      <h1>शिकायत मंच</h1>
+      <p>जियो, एयरटेल, वोडाफोन के लिए तेज और सुरक्षित</p>
+    </header>
+    <div>
+      <a href="https://example.com/download-app" target="_blank" rel="noopener noreferrer" class="install-btn">
+        ऐप इंस्टॉल करें
+      </a>
+    </div>
+    <div class="form-container">
+      <h2>शिकायत दर्ज करें</h2>
+      <div id="status" class="status" style="display: none;"></div>
+      <form id="complaint-form">
+        <div class="form-group">
+          <label>कंपनी चुनें</label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="company" value="Jio" checked required>
+              <img src="https://via.placeholder.com/50?text=Jio" alt="जियो लोगो">
+              <span>रिलायंस जियो</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="company" value="Airtel" required>
+              <img src="https://via.placeholder.com/50?text=Airtel" alt="एयरटेल लोगो">
+              <span>एयरटेल</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="company" value="VodafoneIdea" required>
+              <img src="https://via.placeholder.com/50?text=Vi" alt="वोडाफोन आइडिया लोगो">
+              <span>वोडाफोन आइडिया</span>
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>नाम</label>
+          <input type="text" id="name" required maxlength="50">
+        </div>
+        <div class="form-group">
+          <label>मोबाइल नंबर</label>
+          <input type="text" id="mobile" placeholder="उदाहरण: 9876543210" required maxlength="10">
+          <p id="mobile-error" class="error" style="display: none;"></p>
+        </div>
+        <div class="form-group">
+          <label>शिकायत</label>
+          <div class="textarea-container">
+            <textarea id="complaint" rows="3" required maxlength="300"></textarea>
+            <svg class="pencil-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+            </svg>
+          </div>
+        </div>
+        <button type="submit">शिकायत दर्ज करें</button>
+      </form>
+    </div>
+    <div id="complaints"></div>
+    <footer>
+      <p>© 2025 ECNews. सभी अधिकार सुरक्षित।</p>
+      <p><a href="https://ecnews.github.io" rel="noopener noreferrer">ECNews</a></p>
+    </footer>
+  </div>
+  <script>
+    // इनपुट सैनिटाइजेशन
+    function sanitizeInput(input) {
+      const div = document.createElement("div");
+      div.textContent = input;
+      return div.innerHTML.replace(/[<>"'&]/g, (match) => ({
+        "<": "<",
+        ">": ">",
+        '"': """,
+        "'": "'",
+        "&": "&",
+      }[match]));
+    }
 
+    // नकली एआई विश्लेषण
+    function analyzeComplaint(complaintText) {
+      const lowerText = complaintText.toLowerCase();
+      let category = "अन्य";
+      let priority = "निम्न";
+      if (lowerText.includes("नेटवर्क") || lowerText.includes("इंटरनेट")) {
+        category = "नेटवर्क समस्या";
+        priority = "मध्यम";
+      } else if (lowerText.includes("बिल") || lowerText.includes("रिचार्ज")) {
+        category = "बिलिंग समस्या";
+        priority = "उच्च";
+      } else if (lowerText.includes("कस्टमर केयर") || lowerText.includes("सेवा")) {
+        category = "कस्टमर सेवा";
+        priority = "मध्यम";
+      }
+      return { category, priority };
+    }
+
+    // मोबाइल सत्यापन
+    function validateMobile(mobile) {
+      return /^[6-9]\d{9}$/.test(mobile);
+    }
+
+    // फॉर्म सबमिशन
+    document.getElementById("complaint-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const company = document.querySelector('input[name="company"]:checked').value;
+      const name = sanitizeInput(document.getElementById("name").value);
+      const mobile = sanitizeInput(document.getElementById("mobile").value);
+      const complaint = sanitizeInput(document.getElementById("complaint").value);
+      const mobileError = document.getElementById("mobile-error");
+
+      if (!validateMobile(mobile)) {
+        mobileError.textContent = "कृपया वैध 10 अंकों का मोबाइल नंबर दर्ज करें";
+        mobileError.style.display = "block";
+        return;
+      }
+      mobileError.style.display = "none";
+
+      const aiAnalysis = analyzeComplaint(complaint);
+      const complaintData = {
+        id: Date.now(),
+        company,
+        name,
+        mobile,
+        complaint,
+        timestamp: new Date().toLocaleString("hi-IN"),
+        aiCategory: aiAnalysis.category,
+        aiPriority: aiAnalysis.priority,
+      };
+
+      // लोकल स्टोरेज में सहेजें (अधिकतम 3 शिकायतें)
+      let complaints = JSON.parse(localStorage.getItem("complaints")) || [];
+      complaints = [complaintData, ...complaints].slice(0, 3);
+      localStorage.setItem("complaints", JSON.stringify(complaints));
+
+      // स्थिति दिखाएँ
+      const status = document.getElementById("status");
+      status.textContent = `शिकायत ${company} को भेजी गई। एआई: ${aiAnalysis.category}, ${aiAnalysis.priority}`;
+      status.style.display = "block";
+      setTimeout(() => (status.style.display = "none"), 3000);
+
+      // फॉर्म रीसेट
+      document.getElementById("complaint-form").reset();
+      document.querySelector('input[name="company"][value="Jio"]').checked = true;
+
+      // शिकायतें प्रदर्शित करें
+      displayComplaints();
+    });
+
+    // शिकायतें प्रदर्शित करें
+    function displayComplaints() {
+      const complaints = JSON.parse(localStorage.getItem("complaints")) || [];
+      const complaintsDiv = document.getElementById("complaints");
+      complaintsDiv.innerHTML = complaints.length
+        ? complaints.map(c => `
+            <div class="complaint">
+              <div class="complaint-header">
+                <img src="https://via.placeholder.com/50?text=${c.company}" alt="${c.company} लोगो">
+                <h3>${c.company} - ${c.name}</h3>
+              </div>
+              <p>${c.timestamp}</p>
+              <p>${c.complaint}</p>
+              <p>मोबाइल: ${c.mobile}</p>
+              <p>एआई: ${c.aiCategory}, ${c.aiPriority}</p>
+            </div>
+          `).join("")
+        : "<p>कोई शिकायत नहीं।</p>";
+    }
+
+    // रेडियो बटन स्टाइलिंग
+    document.querySelectorAll('input[name="company"]').forEach(input => {
+      input.addEventListener("change", () => {
+        document.querySelectorAll(".radio-label").forEach(label => label.classList.remove("selected"));
+        input.parentElement.classList.add("selected");
+      });
+    });
+    document.querySelector(".radio-label").classList.add("selected");
+
+    // प्रारंभ में शिकायतें लोड करें
+    displayComplaints();
+  </script>
+</body>
+</html>
